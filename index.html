@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Duba AI Chatbot</title>
+    <meta name="description" content="An intelligent AI automation chatbot similar to ChatGPT that seamlessly works both offline and online with edge computing, local task automations, code execution, and cloud Gemini models." />
+    <meta property="og:title" content="Duba AI Chatbot" />
+    <meta property="og:description" content="An intelligent AI automation chatbot similar to ChatGPT that seamlessly works both offline and online with edge computing, local task automations, code execution, and cloud Gemini models." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Duba AI" />
+    <link rel="apple-touch-icon" href="/bhutan-flag.svg" />
+    <link rel="icon" type="image/svg+xml" href="/bhutan-flag.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tibetan:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+      // In accordance with environment constraints ("HMR: Disabled. Ignore WebSocket errors."),
+      // suppress benign ambient Vite HMR WebSocket connection closed errors in iframe preview.
+      window.addEventListener('error', function(event) {
+        if (event.message && (event.message.includes('WebSocket') || event.message.includes('ws://') || event.message.includes('wss://'))) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          return true;
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = event.reason ? String(event.reason.message || event.reason) : '';
+        if (reason.includes('WebSocket') || reason.includes('ws://') || reason.includes('wss://')) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

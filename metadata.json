@@ -1,0 +1,6 @@
+{
+  "name": "Duba AI Chatbot",
+  "description": "An intelligent AI automation chatbot similar to ChatGPT that seamlessly works both offline and online with edge computing, local task automations, code execution, and cloud Gemini models.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
