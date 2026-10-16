@@ -49,8 +49,6 @@ export interface TranslationDictionary {
   starterSummaryPrompt: string;
   starterBhutanLabel: string;
   starterBhutanPrompt: string;
-  bhutanKnowledge: string;
-  bhutanKnowledgeDesc: string;
   languageToggle: string;
   dzongkhaName: string;
 }
@@ -105,10 +103,8 @@ export const translations: Record<'en' | 'dz', TranslationDictionary> = {
     starterMathPrompt: 'Calculate compound interest on $10,000 at 7% annual return over 10 years.',
     starterSummaryLabel: 'Summarize Document',
     starterSummaryPrompt: 'summarize: Artificial intelligence is transforming modern productivity by automating repetitive tasks, synthesizing complex datasets, and enabling intelligent edge devices to work completely offline.',
-    starterBhutanLabel: 'Bhutan Civics & Automation',
-    starterBhutanPrompt: 'Provide an up-to-date briefing on Bhutan’s automation history, Gelephu Mindfulness City (GMC), NDI, and democratic civics.',
-    bhutanKnowledge: 'Bhutan Civics & Tech Hub',
-    bhutanKnowledgeDesc: 'Up-to-date automation history, GMC SAR 2024, NDI, and Constitution 2008.',
+    starterBhutanLabel: 'Bhutan Culture & GNH',
+    starterBhutanPrompt: 'Explain the four pillars and nine domains of Gross National Happiness (GNH) in Bhutan.',
     languageToggle: 'Language / སྐད་ཡིག',
     dzongkhaName: 'རྫོང་ཁ (Dzongkha)',
   },
@@ -161,10 +157,8 @@ export const translations: Record<'en' | 'dz', TranslationDictionary> = {
     starterMathPrompt: 'དངུལ་ཀྲམ་ ༡༠,༠༠༠ ལུ་ ལོ་ ༡༠ གི་རིང་ སྐྱེད་བརྒྱ་ཆ་ ༧ རེ་བརྩིས་ཏེ་ སྐྱེད་བསྡོམས་རྩིས་སྟོན།',
     starterSummaryLabel: 'ཡིག་ཆ་བསྡུས་དོན',
     starterSummaryPrompt: 'summarize: འབྲུག་རྒྱལ་ཁབ་ནང་ རྒྱལ་ཡོངས་དགའ་སྐྱིད་དཔལ་འཛོམས་ (GNH) འདི་ རྒྱལ་ཡོངས་གོང་འཕེལ་གྱི་དམིགས་ཡུལ་གཙོ་བོ་ཅིག་ཨིན། འདི་གིས་ དཔལ་འབྱོར་གཅིག་རྐྱངམ་གཅིག་མིན་པར་ མི་སྡེའི་བདེ་སྐྱིད་དང་ རང་བཞིན་གནས་སྟངས་ ལམ་སྲོལ་སྲུང་སྐྱོབ་ཚུ་ལུ་གཙོ་བོར་བཟུང་ཨིན།',
-    starterBhutanLabel: 'འབྲུག་གི་གློག་རིག་དང་ རྒྱལ་འབངས་རིག་པ',
-    starterBhutanPrompt: 'འབྲུག་གི་རང་བཞིན་གློག་རིག་བྱུང་རབས་དང་ དགེ་ལེགས་ཕུ་དྲན་ཤེས་ཁྲོམ་ཚོགས (GMC) དེ་ལས་ རྩ་ཁྲིམས་ཆེན་མོའི་གནས་ཚུལ་ རྫོང་ཁའི་ཐོག་ལས་ རྒྱས་པར་བཤད་གནང་།',
-    bhutanKnowledge: 'འབྲུག་གི་ཤེས་བྱ་དང་ རྒྱལ་འབངས་རིག་པ',
-    bhutanKnowledgeDesc: 'གློག་རིག་བྱུང་རབས་དང་ དགེ་ལེགས་ཕུ་ཁྲོམ་ཚོགས་ རྩ་ཁྲིམས་ཆེན་མོའི་གནས་ཚུལ།',
+    starterBhutanLabel: 'འབྲུག་གི་ལམ་སྲོལ་དང་ རྒྱལ་ཡོངས་དགའ་སྐྱིད་དཔལ་འཛོམས',
+    starterBhutanPrompt: 'འབྲུག་གི་རྒྱལ་ཡོངས་དགའ་སྐྱིད་དཔལ་འཛོམས་ (GNH) ཀྱི་ཀ་ཆེན་བཞི་དང་ ཁྱབ་ཁོངས་དགུ་གི་སྐོར་ལས་ རྫོང་ཁའི་ཐོག་ལས་གསལ་བཤད་འབད་གནང་།',
     languageToggle: 'སྐད་ཡིག / Language',
     dzongkhaName: 'རྫོང་ཁ (Dzongkha)',
   },

@@ -37,7 +37,6 @@ interface SidebarProps {
   onOpenSettings: () => void;
   onOpenAutomation: () => void;
   onOpenSandbox: () => void;
-  onOpenBhutanKnowledge?: () => void;
   isOnline: boolean;
   pingMs: number | null;
   forceOffline: boolean;
@@ -98,7 +97,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onOpenSettings,
   onOpenAutomation,
   onOpenSandbox,
-  onOpenBhutanKnowledge,
   isOnline,
   pingMs,
   forceOffline,
@@ -324,17 +322,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       >
         {/* Brand Header with Bhutanese Flag Logo */}
         <div className="flex items-center justify-between border-b border-slate-800/70 p-4">
-          <div 
-            onClick={onOpenBhutanKnowledge}
-            title={language === 'dz' ? 'འབྲུག་གི་ཤེས་བྱ་དང་ རྒྱལ་འབངས་རིག་པ' : 'Bhutan Civics & Automation Hub (Click to open)'}
-            className="flex items-center gap-3 cursor-pointer group hover:opacity-90 transition active:scale-95"
-          >
+          <div className="flex items-center gap-3">
             {/* Authentic Bhutanese Flag Logo */}
-            <BhutanFlagLogo size="md" withGlow className="shadow-amber-500/30 ring-1 ring-amber-400/50 group-hover:scale-105 transition-transform" />
+            <BhutanFlagLogo size="md" withGlow className="shadow-amber-500/30 ring-1 ring-amber-400/50" />
 
             <div>
               <div className="flex items-center gap-1.5">
-                <h1 className="text-sm font-black tracking-wider text-white group-hover:text-amber-300 transition">
+                <h1 className="text-sm font-black tracking-wider text-white">
                   {t.appName}
                 </h1>
                 <span className="rounded bg-amber-500/20 px-1 py-0.2 text-[9px] font-mono font-bold text-amber-300 border border-amber-500/30">
@@ -615,16 +609,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Quick Automation Tools Bar */}
         <div className="border-t border-slate-800/80 p-2 space-y-1 bg-slate-950/80">
-          <button
-            onClick={() => {
-              onOpenBhutanKnowledge?.();
-              onCloseMobile();
-            }}
-            className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-amber-300 bg-amber-950/20 border border-amber-500/30 hover:bg-amber-950/40 hover:border-amber-400 transition"
-          >
-            <BhutanFlagLogo size="xs" />
-            <span className="font-semibold truncate">{t.bhutanKnowledge}</span>
-          </button>
           <button
             onClick={onOpenAutomation}
             className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 hover:bg-slate-900 hover:text-amber-300 transition"

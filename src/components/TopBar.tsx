@@ -14,7 +14,6 @@ import {
 import { ModelMode } from '../types/chat';
 import { PWAInstallButton } from './PWAInstallButton';
 import { translations } from '../services/translations';
-import { BhutanFlagLogo } from './BhutanFlagLogo';
 
 interface TopBarProps {
   onToggleSidebar: () => void;
@@ -26,7 +25,6 @@ interface TopBarProps {
   onToggleForceOffline: () => void;
   onOpenSandbox: () => void;
   onOpenAutomation: () => void;
-  onOpenBhutanKnowledge: () => void;
   onExportMarkdown: () => void;
   language: 'en' | 'dz';
   onToggleLanguage: () => void;
@@ -42,7 +40,6 @@ export const TopBar: React.FC<TopBarProps> = ({
   onToggleForceOffline,
   onOpenSandbox,
   onOpenAutomation,
-  onOpenBhutanKnowledge,
   onExportMarkdown,
   language,
   onToggleLanguage,
@@ -61,15 +58,6 @@ export const TopBar: React.FC<TopBarProps> = ({
         >
           <Menu className="h-5 w-5" />
         </button>
-
-        {/* Bhutan Flag Brand Badge (Clickable to open Knowledge) */}
-        <div 
-          onClick={onOpenBhutanKnowledge}
-          title={language === 'dz' ? 'འབྲུག་གི་རང་བཞིན་གློག་རིག་དང་ རྒྱལ་འབངས་རིག་པ' : 'Bhutan Automation History & Civics Knowledge'}
-          className="cursor-pointer flex items-center gap-1.5 hover:opacity-90 transition active:scale-95"
-        >
-          <BhutanFlagLogo size="sm" withGlow />
-        </div>
 
         {/* Model Selector Dropdown */}
         <div className="relative">
@@ -216,18 +204,6 @@ export const TopBar: React.FC<TopBarProps> = ({
               <span>{t.offline}</span>
             </>
           )}
-        </button>
-
-        {/* Bhutan Civics & Automation Knowledge Modal */}
-        <button
-          onClick={onOpenBhutanKnowledge}
-          title={t.bhutanKnowledge}
-          className="flex items-center gap-1.5 rounded-xl border border-amber-500/40 bg-gradient-to-r from-amber-950/50 to-orange-950/40 px-2.5 py-1 text-xs font-semibold text-amber-300 hover:border-amber-400 hover:from-amber-900/50 hover:to-orange-900/50 shadow-sm transition active:scale-95"
-        >
-          <BhutanFlagLogo size="xs" />
-          <span className="hidden sm:inline font-bold">
-            {language === 'dz' ? 'འབྲུག་གི་ཤེས་བྱ' : 'Bhutan Civics'}
-          </span>
         </button>
 
         {/* Code Sandbox shortcut */}
