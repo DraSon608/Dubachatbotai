@@ -51,6 +51,12 @@ export interface TranslationDictionary {
   starterBhutanPrompt: string;
   languageToggle: string;
   dzongkhaName: string;
+  wifiOnline: string;
+  cellularOnline: string;
+  autoInterpretTitle: string;
+  autoInterpretDesc: string;
+  autoConnectedOnline: string;
+  autoDisconnectedOffline: string;
 }
 
 export const translations: Record<'en' | 'dz', TranslationDictionary> = {
@@ -107,6 +113,12 @@ export const translations: Record<'en' | 'dz', TranslationDictionary> = {
     starterBhutanPrompt: 'Explain the four pillars and nine domains of Gross National Happiness (GNH) in Bhutan.',
     languageToggle: 'Language / སྐད་ཡིག',
     dzongkhaName: 'རྫོང་ཁ (Dzongkha)',
+    wifiOnline: 'Wi-Fi Online',
+    cellularOnline: 'Mobile Data Online',
+    autoInterpretTitle: 'Auto-Interpret Network',
+    autoInterpretDesc: 'Automatically detect Wi-Fi & cellular data to enable Online mode seamlessly.',
+    autoConnectedOnline: 'Internet connection detected — automatically enabled Online Cloud Mode.',
+    autoDisconnectedOffline: 'No internet connection — automatically using Duba Offline Neural Core.',
   },
   dz: {
     appName: 'འབྲུག་དུ་བ AI',
@@ -161,5 +173,11 @@ export const translations: Record<'en' | 'dz', TranslationDictionary> = {
     starterBhutanPrompt: 'འབྲུག་གི་རྒྱལ་ཡོངས་དགའ་སྐྱིད་དཔལ་འཛོམས་ (GNH) ཀྱི་ཀ་ཆེན་བཞི་དང་ ཁྱབ་ཁོངས་དགུ་གི་སྐོར་ལས་ རྫོང་ཁའི་ཐོག་ལས་གསལ་བཤད་འབད་གནང་།',
     languageToggle: 'སྐད་ཡིག / Language',
     dzongkhaName: 'རྫོང་ཁ (Dzongkha)',
+    wifiOnline: 'ཝའི་ཕའི་རྒྱུན་འབྲེལ་ཡོདཔ',
+    cellularOnline: 'འགྲུལ་འཕྲིན་དྲ་རྒྱ་ཡོདཔ',
+    autoInterpretTitle: 'དྲ་རྒྱ་རང་བཞིན་བརྟག་ཞིབ',
+    autoInterpretDesc: 'ཝའི་ཕའི་དང་ འགྲུལ་འཕྲིན་དྲ་རྒྱ་ཡོད་ཚེ་ རང་བཞིན་གྱིས་རྒྱུན་འབྲེལ་ཡོད་པའི་ཐོག་ལུ་བསྒྱུར་བཅོས་འབདཝ་ཨིན།',
+    autoConnectedOnline: 'དྲ་རྒྱའི་མཐུད་ལམ་ཐོབ་ཡོད — སྤྲིན་ཚོགས་རིག་སྟོབས་ལུ་ རང་བཞིན་གྱིས་མཐུད་ཡོད།',
+    autoDisconnectedOffline: 'དྲ་རྒྱ་མེད — དུ་བ་རྒྱུན་འབྲེལ་མེད་པའི་རིག་རྩལ་ལུ་ རང་བཞིན་གྱིས་བསྒྱུར་ཡོད།',
   },
 };

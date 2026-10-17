@@ -17,8 +17,12 @@ import {
   CheckCircle2,
   Calendar,
   Layers,
+  Radio,
+  PanelLeftClose,
+  SquarePen,
+  User,
 } from 'lucide-react';
-import { ChatSession } from '../types/chat';
+import { ChatSession, NetworkConnectionType } from '../types/chat';
 import { PWAInstallButton } from './PWAInstallButton';
 import { StorageService } from '../services/storage';
 import { translations } from '../services/translations';
@@ -41,6 +45,8 @@ interface SidebarProps {
   pingMs: number | null;
   forceOffline: boolean;
   language: 'en' | 'dz';
+  connectionType?: NetworkConnectionType;
+  effectiveType?: string;
 }
 
 interface SearchMatchItem {
@@ -101,6 +107,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   pingMs,
   forceOffline,
   language,
+  connectionType = 'unknown',
+  effectiveType,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchFilter, setSearchFilter] = useState<'all' | 'titles' | 'messages'>('all');
@@ -152,7 +160,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     URL.revokeObjectURL(url);
   };
 
-  // Advanced Search Across Titles AND Message History
+  // Full Text Search Across Titles AND Message History
   const searchResults: SearchMatchItem[] = useMemo(() => {
     const trimmed = searchQuery.trim().toLowerCase();
     if (!trimmed) return [];
@@ -167,7 +175,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         const contentLower = msg.content.toLowerCase();
         const matchIdx = contentLower.indexOf(trimmed);
         if (matchIdx !== -1) {
-          // Extract snippet with window before & after
           const start = Math.max(0, matchIdx - 32);
           const end = Math.min(msg.content.length, matchIdx + trimmed.length + 55);
           let snippet = msg.content.slice(start, end).replace(/\s+/g, ' ');
@@ -186,7 +193,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
       const totalCount = (inTitle ? 1 : 0) + messageMatches.length;
 
       if (totalCount > 0) {
-        // Apply scope filter
         if (searchFilter === 'titles' && !inTitle) continue;
         if (searchFilter === 'messages' && messageMatches.length === 0) continue;
 
@@ -202,12 +208,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
     return results;
   }, [sessions, searchQuery, searchFilter]);
 
-  // Total matches count for badge
   const totalMatchCount = useMemo(() => {
     return searchResults.reduce((acc, item) => acc + item.totalCount, 0);
   }, [searchResults]);
 
-  // Standard chronologically grouped sessions when not searching
+  // Chronologically grouped sessions
   const now = Date.now();
   const oneDay = 24 * 60 * 60 * 1000;
   const pinnedSessions = sessions.filter((s) => s.isPinned);
@@ -233,18 +238,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
           onSelectSession(session.id);
           onCloseMobile();
         }}
-        className={`group relative flex items-center justify-between gap-2 rounded-xl px-3 py-2 text-xs cursor-pointer transition-all ${
+        className={`group relative flex items-center justify-between gap-2 rounded-lg px-2.5 py-2 text-xs cursor-pointer transition-all ${
           isActive
-            ? 'bg-slate-800 text-cyan-300 font-medium shadow-sm border border-slate-700/60'
-            : 'text-slate-300 hover:bg-slate-900 hover:text-white'
+            ? 'bg-[#212121] text-white font-medium border border-white/5 shadow-sm'
+            : 'text-slate-300 hover:bg-[#212121]/60 hover:text-white'
         }`}
       >
-        <div className="flex items-center gap-2.5 overflow-hidden flex-1">
-          <MessageSquare
-            className={`h-3.5 w-3.5 shrink-0 ${
-              isActive ? 'text-cyan-400' : 'text-slate-500 group-hover:text-slate-400'
-            }`}
-          />
+        <div className="flex items-center gap-2 overflow-hidden flex-1">
+          {session.isPinned && (
+            <Pin className="h-3 w-3 shrink-0 text-amber-400 fill-amber-400" />
+          )}
           {isEditing ? (
             <form onSubmit={(e) => saveEditing(session.id, e)} className="flex-1">
               <input
@@ -253,7 +256,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onChange={(e) => setEditTitle(e.target.value)}
                 onBlur={() => saveEditing(session.id)}
                 autoFocus
-                className="w-full bg-slate-950 px-1.5 py-0.5 rounded text-xs text-white outline-none border border-cyan-500"
+                className="w-full bg-[#171717] px-1.5 py-0.5 rounded text-xs text-white outline-none border border-amber-400"
               />
             </form>
           ) : (
@@ -263,28 +266,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Action icons on hover */}
         {!isEditing && (
-          <div className="hidden group-hover:flex items-center gap-1 shrink-0">
+          <div className="hidden group-hover:flex items-center gap-0.5 shrink-0">
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onTogglePinSession(session.id);
               }}
               title={session.isPinned ? 'Unpin chat' : 'Pin chat'}
-              className="p-1 rounded text-slate-400 hover:text-amber-400 hover:bg-slate-800"
+              className="p-1 rounded text-slate-400 hover:text-amber-400 hover:bg-white/10"
             >
               <Pin className={`h-3 w-3 ${session.isPinned ? 'text-amber-400 fill-amber-400' : ''}`} />
             </button>
             <button
               onClick={(e) => startEditing(session, e)}
               title="Rename"
-              className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+              className="p-1 rounded text-slate-400 hover:text-white hover:bg-white/10"
             >
               <Edit2 className="h-3 w-3" />
             </button>
             <button
               onClick={(e) => exportSessionMarkdown(session, e)}
               title="Export as Markdown"
-              className="p-1 rounded text-slate-400 hover:text-cyan-400 hover:bg-slate-800"
+              className="p-1 rounded text-slate-400 hover:text-cyan-400 hover:bg-white/10"
             >
               <FileDown className="h-3 w-3" />
             </button>
@@ -294,7 +297,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onDeleteSession(session.id);
               }}
               title="Delete chat"
-              className="p-1 rounded text-slate-400 hover:text-rose-400 hover:bg-slate-800"
+              className="p-1 rounded text-slate-400 hover:text-rose-400 hover:bg-white/10"
             >
               <Trash2 className="h-3 w-3" />
             </button>
@@ -314,64 +317,58 @@ export const Sidebar: React.FC<SidebarProps> = ({
         />
       )}
 
-      {/* Sidebar Container */}
+      {/* ChatGPT Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 flex w-80 flex-col border-r border-slate-800/80 bg-slate-950/95 backdrop-blur-xl transition-transform duration-200 lg:static lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-40 flex w-[260px] flex-col border-r border-white/5 bg-[#171717] transition-transform duration-200 lg:static lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Brand Header with Bhutanese Flag Logo */}
-        <div className="flex items-center justify-between border-b border-slate-800/70 p-4">
-          <div className="flex items-center gap-3">
-            {/* Authentic Bhutanese Flag Logo */}
-            <BhutanFlagLogo size="md" withGlow className="shadow-amber-500/30 ring-1 ring-amber-400/50" />
-
-            <div>
-              <div className="flex items-center gap-1.5">
-                <h1 className="text-sm font-black tracking-wider text-white">
-                  {t.appName}
-                </h1>
-                <span className="rounded bg-amber-500/20 px-1 py-0.2 text-[9px] font-mono font-bold text-amber-300 border border-amber-500/30">
-                  🇧🇹 BT
-                </span>
-              </div>
-              <p className="text-[10px] font-medium text-slate-400">
-                {t.tagline}
-              </p>
+        {/* Brand Header with Bhutanese Flag Logo & Collapse Button */}
+        <div className="flex items-center justify-between p-3.5 border-b border-white/5">
+          <div className="flex items-center gap-2.5">
+            <BhutanFlagLogo size="sm" withGlow className="shadow-amber-500/20" />
+            <div className="flex items-center gap-1.5">
+              <span className="text-sm font-bold tracking-tight text-white">
+                {t.appName}
+              </span>
+              <span className="rounded bg-amber-500/20 px-1 py-0.2 text-[9px] font-mono font-bold text-amber-300">
+                🇧🇹
+              </span>
             </div>
           </div>
 
           <button
             onClick={onCloseMobile}
-            className="lg:hidden rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white"
+            title="Close sidebar"
+            className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-white/10 hover:text-white transition"
           >
-            <X className="h-5 w-5" />
+            <PanelLeftClose className="h-4 w-4" />
           </button>
         </div>
 
-        {/* New Chat Button */}
+        {/* ChatGPT New Chat Button */}
         <div className="p-3">
           <button
             onClick={() => {
               onNewChat();
               onCloseMobile();
             }}
-            className="flex w-full items-center justify-between rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-indigo-600 px-3.5 py-2.5 text-xs font-semibold text-white shadow-md shadow-amber-500/20 hover:from-amber-400 hover:via-orange-400 hover:to-indigo-500 active:scale-[0.98] transition-all"
+            className="flex w-full items-center justify-between rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-white hover:bg-white/10 active:scale-[0.98] transition shadow-sm"
           >
             <span className="flex items-center gap-2">
-              <Plus className="h-4 w-4" />
-              {t.newChat}
+              <SquarePen className="h-3.5 w-3.5 text-amber-400" />
+              <span>{t.newChat}</span>
             </span>
-            <span className="rounded bg-black/20 px-1.5 py-0.5 text-[10px] font-mono">
+            <span className="rounded border border-white/10 bg-white/5 px-1.5 py-0.2 text-[10px] font-mono text-slate-400">
               Ctrl+K
             </span>
           </button>
         </div>
 
-        {/* Precision Search Bar */}
+        {/* Search Bar */}
         <div className="px-3 pb-2 space-y-2">
           <div className="relative flex items-center">
-            <Search className="absolute left-3 h-3.5 w-3.5 text-amber-400/80" />
+            <Search className="absolute left-3 h-3.5 w-3.5 text-slate-400" />
             <input
               ref={searchInputRef}
               type="text"
@@ -380,109 +377,84 @@ export const Sidebar: React.FC<SidebarProps> = ({
               placeholder={
                 language === 'dz'
                   ? 'མིང་བྱང་དང་ གླེང་མོལ་ནང་འཚོལ་ཞིབ...'
-                  : 'Search titles & message history...'
+                  : 'Search conversations...'
               }
-              className="w-full rounded-xl border border-slate-800 bg-slate-900/80 pl-9 pr-8 py-2 text-xs text-slate-100 placeholder-slate-500 outline-none focus:border-amber-400/70 focus:ring-1 focus:ring-amber-400/30 transition shadow-inner"
+              className="w-full rounded-xl border border-white/5 bg-[#212121] pl-9 pr-7 py-1.5 text-xs text-slate-200 placeholder-slate-500 outline-none focus:border-white/20 transition"
             />
             {searchQuery ? (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 rounded-full p-0.5 text-slate-400 hover:bg-slate-800 hover:text-white"
+                className="absolute right-2 rounded-full p-0.5 text-slate-400 hover:text-white"
                 title="Clear search"
               >
                 <X className="h-3.5 w-3.5" />
               </button>
             ) : (
-              <span className="absolute right-2.5 rounded border border-slate-700 bg-slate-800 px-1 py-0.5 text-[10px] font-mono text-slate-400">
+              <span className="absolute right-2 text-[10px] font-mono text-slate-500">
                 /
               </span>
             )}
           </div>
 
-          {/* Search Scope Filter Chips when query exists */}
           {searchQuery.trim() && (
             <div className="flex items-center justify-between text-[11px] pt-1">
               <div className="flex items-center gap-1">
                 <button
                   onClick={() => setSearchFilter('all')}
-                  className={`rounded-lg px-2 py-0.5 font-medium transition ${
+                  className={`rounded-md px-1.5 py-0.5 font-medium transition ${
                     searchFilter === 'all'
-                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-amber-500/20 text-amber-300'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {language === 'dz' ? 'ཆ་ཚང་' : 'All'}
+                  All
                 </button>
                 <button
                   onClick={() => setSearchFilter('titles')}
-                  className={`rounded-lg px-2 py-0.5 font-medium transition ${
+                  className={`rounded-md px-1.5 py-0.5 font-medium transition ${
                     searchFilter === 'titles'
-                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-cyan-500/20 text-cyan-300'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {language === 'dz' ? 'མིང་བྱང་' : 'Titles'}
+                  Titles
                 </button>
                 <button
                   onClick={() => setSearchFilter('messages')}
-                  className={`rounded-lg px-2 py-0.5 font-medium transition ${
+                  className={`rounded-md px-1.5 py-0.5 font-medium transition ${
                     searchFilter === 'messages'
-                      ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40'
-                      : 'text-slate-400 hover:text-slate-200'
+                      ? 'bg-indigo-500/20 text-indigo-300'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {language === 'dz' ? 'གླེང་མོལ' : 'Messages'}
+                  Messages
                 </button>
               </div>
 
-              <span className="text-[10px] font-mono text-slate-400">
-                {searchResults.length} {language === 'dz' ? 'ཐོབ་ཡོད' : 'results'}
+              <span className="text-[10px] font-mono text-slate-500">
+                {searchResults.length} results
               </span>
             </div>
           )}
         </div>
 
-        {/* Main Scroll Area: Search Results or Default Grouped Sessions */}
-        <div className="flex-1 overflow-y-auto px-3 py-1 space-y-4">
+        {/* Sessions Scroll List */}
+        <div className="flex-1 overflow-y-auto px-2 py-1 space-y-4">
           {searchQuery.trim() ? (
-            /* Search Results Mode */
-            <div className="space-y-2">
-              <div className="flex items-center justify-between px-1 text-[11px] text-slate-400 border-b border-slate-800/60 pb-1.5">
-                <span className="font-semibold text-amber-400 flex items-center gap-1">
-                  <Filter className="h-3 w-3" />
-                  {language === 'dz' ? 'འཚོལ་ཞིབ་གྲུབ་འབྲས' : 'Search Results'}
-                </span>
-                <span className="text-[10px] font-mono">
-                  {totalMatchCount} {language === 'dz' ? 'མཐུན་པ' : 'matches'}
-                </span>
+            /* Search Results */
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between px-2 text-[10px] font-bold uppercase tracking-wider text-slate-500 pb-1 border-b border-white/5">
+                <span>Search Results</span>
+                <span>{totalMatchCount} matches</span>
               </div>
 
               {searchResults.length === 0 ? (
-                <div className="text-center py-8 px-2 space-y-2">
-                  <div className="flex h-10 w-10 mx-auto items-center justify-center rounded-full bg-slate-900 border border-slate-800 text-slate-500">
-                    <Search className="h-5 w-5" />
-                  </div>
-                  <p className="text-xs font-medium text-slate-300">
-                    {language === 'dz'
-                      ? `"${searchQuery}" གི་ཐོག་ལས་ གླེང་མོལ་མ་ཐོབ།`
-                      : `No results for "${searchQuery}"`}
-                  </p>
-                  <p className="text-[11px] text-slate-500">
-                    {language === 'dz'
-                      ? 'མིང་ཚིག་གཞན་ཅིག་ལག་ལེན་འཐབ་སྟེ་ འཚོལ་ཞིབ་འབད་གནང་།'
-                      : 'Try different keywords or check spelling.'}
-                  </p>
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="inline-block mt-2 rounded-lg bg-slate-800 px-3 py-1 text-xs text-amber-300 hover:bg-slate-700"
-                  >
-                    {language === 'dz' ? 'འཚོལ་ཞིབ་བསུབ་དཱ' : 'Clear Search'}
-                  </button>
+                <div className="text-center py-6 px-2 text-xs text-slate-500">
+                  No conversations match "{searchQuery}"
                 </div>
               ) : (
-                searchResults.map(({ session, matchedInTitle, messageMatches, totalCount }) => {
+                searchResults.map(({ session, messageMatches, totalCount }) => {
                   const isActive = session.id === activeSessionId;
-
                   return (
                     <div
                       key={session.id}
@@ -490,60 +462,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         onSelectSession(session.id);
                         onCloseMobile();
                       }}
-                      className={`group relative flex flex-col gap-1.5 rounded-xl p-2.5 text-xs cursor-pointer transition-all border ${
+                      className={`group flex flex-col gap-1 rounded-lg p-2 text-xs cursor-pointer transition ${
                         isActive
-                          ? 'bg-slate-800/90 text-amber-200 border-amber-500/40 shadow-sm'
-                          : 'bg-slate-900/50 border-slate-800/70 text-slate-300 hover:border-slate-700 hover:bg-slate-850'
+                          ? 'bg-[#212121] text-amber-200 border border-white/10'
+                          : 'text-slate-300 hover:bg-[#212121]/50'
                       }`}
                     >
-                      {/* Session Title Header */}
-                      <div className="flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-1.5 min-w-0 font-semibold text-white">
-                          <MessageSquare className="h-3.5 w-3.5 shrink-0 text-amber-400" />
-                          <span className="truncate">
-                            <HighlightedText text={session.title} query={searchQuery} />
-                          </span>
-                        </div>
-                        <span className="rounded-full bg-slate-800 px-1.5 py-0.2 text-[9px] font-mono text-slate-400 shrink-0">
-                          {totalCount} {totalCount === 1 ? 'match' : 'matches'}
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium truncate">
+                          <HighlightedText text={session.title} query={searchQuery} />
+                        </span>
+                        <span className="text-[9px] font-mono text-slate-500">
+                          {totalCount}
                         </span>
                       </div>
-
-                      {/* Badges showing match location */}
-                      <div className="flex items-center gap-1.5 text-[10px]">
-                        {matchedInTitle && (
-                          <span className="rounded bg-cyan-950/70 px-1.5 py-0.2 text-cyan-300 border border-cyan-800/40">
-                            {language === 'dz' ? 'མིང་བྱང་ནང་' : 'In Title'}
-                          </span>
-                        )}
-                        {messageMatches.length > 0 && (
-                          <span className="rounded bg-amber-950/70 px-1.5 py-0.2 text-amber-300 border border-amber-800/40">
-                            {messageMatches.length} {language === 'dz' ? 'གླེང་མོལ་ནང་' : 'in message history'}
-                          </span>
-                        )}
-                        <span className="text-slate-500 ml-auto font-mono text-[9px]">
-                          {new Date(session.updatedAt).toLocaleDateString([], {
-                            month: 'short',
-                            day: 'numeric',
-                          })}
-                        </span>
-                      </div>
-
-                      {/* Snippet Preview from Message History */}
                       {messageMatches.length > 0 && (
-                        <div className="mt-1 rounded-lg bg-slate-950/70 p-2 text-[11px] text-slate-300 border border-slate-800/50 space-y-1">
-                          <div className="flex items-center gap-1 text-[9px] text-slate-400 uppercase font-mono">
-                            <span>
-                              {messageMatches[0].role === 'user' ? '👤 User:' : '🤖 Duba:'}
-                            </span>
-                          </div>
-                          <p className="line-clamp-2 leading-relaxed">
-                            <HighlightedText
-                              text={messageMatches[0].snippet}
-                              query={searchQuery}
-                            />
-                          </p>
-                        </div>
+                        <p className="line-clamp-2 text-[11px] text-slate-400 bg-black/20 p-1.5 rounded">
+                          <HighlightedText
+                            text={messageMatches[0].snippet}
+                            query={searchQuery}
+                          />
+                        </p>
                       )}
                     </div>
                   );
@@ -551,11 +490,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
               )}
             </div>
           ) : (
-            /* Default Grouped Chat Sessions Mode */
+            /* Chronological Chat History */
             <>
               {pinnedSessions.length > 0 && (
                 <div>
-                  <div className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-400/80 flex items-center gap-1">
+                  <div className="px-2 mb-1 text-[10px] font-bold uppercase tracking-wider text-amber-400/80 flex items-center gap-1">
                     <Pin className="h-2.5 w-2.5 fill-amber-400/80" /> {t.pinned}
                   </div>
                   <div className="space-y-0.5">{pinnedSessions.map(renderSessionItem)}</div>
@@ -564,7 +503,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
               {todaySessions.length > 0 && (
                 <div>
-                  <div className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  <div className="px-2 mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                     {t.today}
                   </div>
                   <div className="space-y-0.5">{todaySessions.map(renderSessionItem)}</div>
@@ -573,7 +512,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
               {yesterdaySessions.length > 0 && (
                 <div>
-                  <div className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  <div className="px-2 mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                     {t.yesterday}
                   </div>
                   <div className="space-y-0.5">{yesterdaySessions.map(renderSessionItem)}</div>
@@ -582,7 +521,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
               {previous7Days.length > 0 && (
                 <div>
-                  <div className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  <div className="px-2 mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                     {t.previous7Days}
                   </div>
                   <div className="space-y-0.5">{previous7Days.map(renderSessionItem)}</div>
@@ -591,7 +530,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
               {olderSessions.length > 0 && (
                 <div>
-                  <div className="px-2 mb-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                  <div className="px-2 mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                     {t.older}
                   </div>
                   <div className="space-y-0.5">{olderSessions.map(renderSessionItem)}</div>
@@ -607,65 +546,68 @@ export const Sidebar: React.FC<SidebarProps> = ({
           )}
         </div>
 
-        {/* Quick Automation Tools Bar */}
-        <div className="border-t border-slate-800/80 p-2 space-y-1 bg-slate-950/80">
+        {/* Quick Launch Tools */}
+        <div className="border-t border-white/5 p-2 space-y-0.5">
           <button
             onClick={onOpenAutomation}
-            className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 hover:bg-slate-900 hover:text-amber-300 transition"
+            className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 hover:bg-white/5 hover:text-white transition"
           >
             <Sparkles className="h-3.5 w-3.5 text-amber-400" />
             <span>{t.automationHub}</span>
           </button>
           <button
             onClick={onOpenSandbox}
-            className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 hover:bg-slate-900 hover:text-amber-300 transition"
+            className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 hover:bg-white/5 hover:text-white transition"
           >
             <Code2 className="h-3.5 w-3.5 text-indigo-400" />
             <span>{t.codeSandbox}</span>
           </button>
         </div>
 
-        {/* Bottom Status & Settings Footer */}
-        <div className="border-t border-slate-800/80 p-3 bg-slate-950">
-          <div className="flex items-center justify-between mb-2.5">
-            {/* Status indicator */}
-            <div className="flex items-center gap-2 text-[11px]">
-              {isOnline ? (
-                <div className="flex items-center gap-1.5 text-emerald-400">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <Wifi className="h-3 w-3" />
-                  <span className="font-medium">
-                    {forceOffline ? t.forcedOffline : t.online}
-                  </span>
-                  {pingMs !== null && !forceOffline && (
-                    <span className="text-[10px] text-slate-500 font-mono">
-                      {pingMs}ms
-                    </span>
+        {/* Bottom Profile & Status (ChatGPT Style) */}
+        <div className="border-t border-white/5 p-2 bg-[#171717]">
+          <div className="flex items-center justify-between rounded-xl p-2 hover:bg-white/5 transition cursor-pointer" onClick={onOpenSettings}>
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-amber-500 to-orange-600 text-white font-bold text-xs shrink-0 shadow">
+                DB
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs font-semibold text-white truncate">
+                  Duba User
+                </div>
+                <div className="text-[10px] text-slate-400 flex items-center gap-1 font-mono">
+                  {isOnline && !forceOffline ? (
+                    connectionType === 'cellular' ? (
+                      <>
+                        <Radio className="h-2.5 w-2.5 text-cyan-400 animate-pulse" />
+                        <span>Mobile ({effectiveType || '4G'})</span>
+                      </>
+                    ) : (
+                      <>
+                        <Wifi className="h-2.5 w-2.5 text-emerald-400" />
+                        <span>Wi-Fi ({pingMs ? `${pingMs}ms` : 'active'})</span>
+                      </>
+                    )
+                  ) : (
+                    <>
+                      <WifiOff className="h-2.5 w-2.5 text-amber-400" />
+                      <span>Offline Core</span>
+                    </>
                   )}
                 </div>
-              ) : (
-                <div className="flex items-center gap-1.5 text-amber-400">
-                  <WifiOff className="h-3 w-3" />
-                  <span className="font-medium">{t.offline}</span>
-                </div>
-              )}
+              </div>
             </div>
 
-            <PWAInstallButton variant="icon" />
-          </div>
-
-          <div className="flex items-center justify-between pt-1">
             <button
-              onClick={onOpenSettings}
-              className="flex items-center gap-1.5 rounded-lg px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-white transition"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenSettings();
+              }}
+              className="p-1 rounded text-slate-400 hover:text-white"
+              title="Settings"
             >
-              <Settings className="h-3.5 w-3.5" />
-              <span>{t.settings}</span>
+              <Settings className="h-4 w-4" />
             </button>
-            <span className="text-[10px] text-slate-600 font-mono">v1.2 Dual-AI</span>
           </div>
         </div>
       </aside>

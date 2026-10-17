@@ -17,6 +17,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
 You help users with code generation, task automation, mathematical calculations, text transformation, and general problem solving.
 Provide clear, structured responses with Markdown, formatted tables, and well-commented code snippets.`,
   language: 'en',
+  autoInterpretOnline: true,
 };
 
 export const INITIAL_WELCOME_SESSION: ChatSession = {

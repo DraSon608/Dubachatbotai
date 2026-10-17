@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { X, Settings, Volume2, Shield, Download, Upload, Trash2, Cpu, RotateCcw, Globe, Check } from 'lucide-react';
+import { X, Settings, Volume2, Shield, Download, Upload, Trash2, Cpu, RotateCcw, Globe, Check, Wifi } from 'lucide-react';
 import { UserSettings, ModelMode } from '../types/chat';
 import { DEFAULT_SETTINGS, StorageService } from '../services/storage';
 
@@ -183,6 +183,37 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   100% on-device neural heuristic and knowledge engine.
                 </span>
               </button>
+            </div>
+
+            {/* Auto-Interpret Wi-Fi & Cellular */}
+            <div className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 p-3.5">
+              <div className="space-y-0.5">
+                <div className="font-medium text-white flex items-center gap-1.5">
+                  <Wifi className="h-3.5 w-3.5 text-emerald-400" />
+                  {settings.language === 'dz'
+                    ? 'དྲ་རྒྱ་རང་བཞིན་བརྟག་ཞིབ་ (Auto-Interpret Wi-Fi & Mobile Data)'
+                    : 'Auto-Interpret Wi-Fi & Mobile Data'}
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  {settings.language === 'dz'
+                    ? 'ཝའི་ཕའི་དང་ འགྲུལ་འཕྲིན་དྲ་རྒྱ་ཡོད་ཚེ་ རང་བཞིན་གྱིས་རྒྱུན་འབྲེལ་ཡོད་པའི་ཐོག་ལུ་བསྒྱུར་བཅོས་འབདཝ་ཨིན།'
+                    : 'Automatically detect Wi-Fi or cellular data to enable Online Cloud Mode seamlessly.'}
+                </p>
+              </div>
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={settings.autoInterpretOnline}
+                  onChange={(e) =>
+                    onSaveSettings({
+                      ...settings,
+                      autoInterpretOnline: e.target.checked,
+                    })
+                  }
+                  className="sr-only peer"
+                />
+                <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500" />
+              </label>
             </div>
 
             {/* Force Offline Mode Toggle */}

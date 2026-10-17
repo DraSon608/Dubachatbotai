@@ -42,6 +42,19 @@ export interface UserSettings {
   codeFontSize: 'sm' | 'md' | 'lg';
   systemPrompt: string;
   language: 'en' | 'dz';
+  autoInterpretOnline: boolean;
+}
+
+export type NetworkConnectionType = 'wifi' | 'cellular' | 'ethernet' | 'bluetooth' | 'unknown' | 'none';
+
+export interface NetworkTelemetry {
+  isOnline: boolean;
+  connectionType: NetworkConnectionType;
+  effectiveType?: string;
+  downlinkMbps?: number;
+  pingMs: number | null;
+  serverReachable: boolean;
+  lastChecked: number;
 }
 
 export interface ServerHealth {

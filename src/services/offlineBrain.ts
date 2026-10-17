@@ -30,6 +30,119 @@ interface KnowledgeEntry {
 
 const KNOWLEDGE_BASE: KnowledgeEntry[] = [
   {
+    keywords: ['bhutan', 'automation', 'history', 'technology', 'digital', 'ict', 'tech', 'gmc', 'gelephu', 'mindfulness city'],
+    title: 'The Automation & Digital History of Bhutan (1999 – 2026+ Verified)',
+    summary: 'Chronological timeline of Bhutan’s digital transformation, AI initiatives, blockchain identity, and Gelephu Mindfulness City (GMC).',
+    details: `### 🇧🇹 The Automation & Digital History of Bhutan (1999 – 2026+)
+
+Bhutan has achieved one of the world's most unique, values-based digital transformations, pairing cutting-edge automation with **Gross National Happiness (GNH)**:
+
+#### 1. The Dawn of Digital Connectivity (1999 – 2006)
+- **June 2, 1999**: Historic introduction of the **Internet and Television** to Bhutan by His Majesty the Fourth Druk Gyalpo, Jigme Singye Wangchuck, during his Silver Jubilee.
+- **2003**: Inception of Bhutan Telecom and rollout of cellular mobile networks across mountain valleys.
+- **2006**: Adoption of the **National ICT Policy and Strategies (NIPS)**, laying down open digital highways for public education and health.
+
+#### 2. E-Governance & Infrastructure Automation (2007 – 2019)
+- **Nationwide Optical Fiber Backbone**: Laid high-capacity optical fiber along high-voltage electricity transmission grids, connecting all 20 Dzongkhags (districts) and over 200 Gewogs (blocks).
+- **G2C Online Services (Government to Citizen)**: Digitized and automated 100+ public citizen services, civil registration, land records (e-Sakor), and automated taxation (RAMIS).
+- **Automated Glacial Flood Warning (GLOF)**: Deployed automated telemetry sensor and satellite-linked hydrological warning systems along glacial lakes (GLOF monitoring in Lunana and Punakha-Wangdue valleys).
+- **Digital Druk Yul Flagship Program**: Integrated Electronic Patient Information System (e-PIS) in national hospitals.
+
+#### 3. Sovereign Blockchain, Clean Crypto & NDI (2020 – 2023)
+- **Sovereign Green Crypto Mining**: Druk Holding & Investments (DHI) leveraged Bhutan's seasonal surplus green hydroelectric energy to build sovereign, 100% carbon-negative Bitcoin mining and data computing facilities (holding over 13,000+ BTC as a resilient national treasury reserve).
+- **Bhutan NDI (National Digital Identity)**: Launched in **March 2023**, Bhutan became the **first country in the world** to implement a national Self-Sovereign Identity (SSI) on decentralized blockchain technology (Hyperledger Aries/Indy). HRH The Gyalsey Jigme Namgyel Wangchuck became the first digital citizen.
+- **GovTech Agency**: Founded in 2022 to unify civil service automation, data governance, and local AI initiatives.
+
+#### 4. Gelephu Mindfulness City (GMC) & Frontier Tech Era (2024 – 2026+)
+- **Gelephu Mindfulness City (GMC) SAR Act 2024**: Enacted as an autonomous, international Special Administrative Region spanning over 1,000 km² along Bhutan’s southern border. GMC integrates zero-carbon AI clusters, green computing testbeds, international digital asset frameworks, and conscious urbanism grounded in mindfulness.
+- **13th Five Year Plan (2024–2029)**: Mobilizing over Nu. 512+ Billion prioritizing high-tech modernization, sovereign AI tools in Dzongkha, and high-income transition by 2034.`,
+  },
+  {
+    keywords: ['civics', 'constitution', 'government', 'parliament', 'king', 'monarchy', 'national council', 'national assembly', 'judiciary', 'tshering tobgay', 'elections'],
+    title: 'Bhutanese Civics & Governance (All Up-to-Date 2024–2026)',
+    summary: 'Complete guide to the Constitution of Bhutan, Democratic Constitutional Monarchy, Parliament, Judiciary, and Local Governance.',
+    details: `### 🇧🇹 Bhutanese Civics & Governance (རྒྱལ་འབངས་རིག་པ)
+
+Bhutan is a **Democratic Constitutional Monarchy** governed by the Constitution adopted on **July 18, 2008**, transitioning voluntarily from absolute monarchy upon the initiative of the Fourth King.
+
+#### 1. Head of State: The Druk Gyalpo (King of Bhutan)
+- **His Majesty The King** is the Head of State, Supreme Commander-in-Chief of the Armed Forces, and symbol of national unity.
+- Current Monarch: **His Majesty King Jigme Khesar Namgyel Wangchuck** (Fifth Druk Gyalpo).
+
+#### 2. The Three Branches of Government
+| Branch | Institution | Core Function & Current Status |
+|---|---|---|
+| **Executive** | **Lhengye Zhungtshog (Cabinet)** | Headed by the **Prime Minister (Lyonchhen)**. Following the Jan 2024 general elections, **Dasho Tshering Tobgay** (PDP) serves as Prime Minister. |
+| **Legislative** | **Parliament of Bhutan (རྒྱལ་ཡོངས་ཚོགས་ཁང)** | Bicameral system: **National Council** (Upper House) and **National Assembly** (Lower House). |
+| **Judiciary** | **The Royal Court of Justice** | Headed by the **Chief Justice of Bhutan** (Supreme Court), High Court, Dzongkhag Courts, and Dungkhag Courts. |
+
+#### 3. Parliament Structure (Bicameral)
+1. **National Council (རྒྱལ་ཡོངས་ཚོགས་སྡེ - Upper House)**:
+   - **25 Members**: 20 directly elected non-partisan representatives from 20 Dzongkhags + 5 eminent persons nominated by the King.
+   - Serves as the independent house of review, check-and-balance, and guardian of national sovereignty.
+2. **National Assembly (རྒྱལ་ཡོངས་ཚོགས་འདུ - Lower House)**:
+   - **47 Members**: Elected from single-member constituencies across political parties.
+   - Enacts legislation, debates national policy, passes national budgets, and forms the governing cabinet.
+
+#### 4. Four Independent Constitutional Bodies
+- **RCSC (Royal Civil Service Commission)**: Safeguards meritocracy and professional neutrality in the civil service.
+- **ECB (Election Commission of Bhutan)**: Oversees free, fair, and impartial democratic elections.
+- **ACC (Anti-Corruption Commission)**: Enforces zero-tolerance against corruption and malpractice.
+- **RAA (Royal Audit Authority)**: Audits use of public funds and assets to guarantee financial transparency.
+
+#### 5. Local Governance (20 Dzongkhags & 205 Gewogs)
+- **Dzongkhag Tshogdu (District Council)**: Led by elected chairperson with the Dzongdag (District Governor) as chief executive officer.
+- **Gewog Tshogde (Block Council)**: Led by elected **Gup** (Headman), **Mangmi** (Deputy), and **Tshogpas** (village representatives).
+- **Thromdes**: Municipal corporations (Thimphu, Phuntsholing, Gelephu, Samdrup Jongkhar) headed by elected **Thrompons**.
+
+#### 6. Constitutional Environmental & Rights Mandate
+- **Article 5**: Mandates that a minimum of **60% of Bhutan's total land area must be maintained under forest cover for all time** (Bhutan currently maintains over 71% forest cover and is the world’s first carbon-negative nation!).
+- **Article 7 & 8**: Guarantees Fundamental Rights (speech, religion, equality) balanced with Fundamental Duties (safeguarding national sovereignty, preserving heritage, protecting the environment).`,
+  },
+  {
+    keywords: ['gnh', 'happiness', 'gross national happiness', 'pillars', 'domains', 'four pillars', 'nine domains'],
+    title: 'Gross National Happiness (GNH) — Philosophy, Pillars & Domains',
+    summary: 'The 4 pillars and 9 domains of Gross National Happiness guiding Bhutan’s holistic development.',
+    details: `### 🇧🇹 Gross National Happiness (GNH) — རྒྱལ་ཡོངས་དགའ་སྐྱིད་དཔལ་འཛོམས
+
+Articulated in the 1970s by His Majesty the Fourth King Jigme Singye Wangchuck, GNH asserts that **"Gross National Happiness is more important than Gross National Product"**.
+
+#### The 4 Pillars of GNH:
+1. **Sustainable & Equitable Socio-Economic Development**: Free healthcare, free education, rural support, and balanced wealth distribution.
+2. **Environmental Conservation**: Strict constitutional mandate of ≥60% forest cover; world's first net carbon-negative country.
+3. **Preservation and Promotion of Culture**: Preserving intangible heritage, Dzongkha language, Driglam Namzha code of conduct, traditional arts (Zorig Chusum), and sacred festivals (Tshechus).
+4. **Good Governance**: Transparent, accountable, citizen-centric, and corruption-free leadership powered by digital public services.
+
+#### The 9 Domains of GNH:
+- Psychological Wellbeing • Health • Time Use & Balance
+- Education • Cultural Diversity & Resilience • Good Governance
+- Community Vitality • Ecological Diversity & Resilience • Living Standards`,
+  },
+  {
+    keywords: ['flag', 'druk', 'dragon', 'symbols', 'takin', 'blue poppy', 'gho', 'kira', 'emblem'],
+    title: 'The National Flag & Sovereign Symbols of Bhutan',
+    summary: 'Symbolism of the National Flag of Bhutan, the Thunder Dragon (Druk), and national emblems.',
+    details: `### 🇧🇹 The National Flag of Bhutan (འབྲུག་གི་རྒྱལ་དར)
+
+The National Flag was designed in 1949 and standardized in 1969. It is divided diagonally from the lower hoist corner:
+
+1. **Upper Golden-Yellow Triangle**: Symbolizes the civil and secular authority of His Majesty the King as temporal leader.
+2. **Lower Warm-Orange Triangle**: Represents the spiritual power and practice of Drukpa Kagyu and Buddhist traditions.
+3. **Centrally Positioned White Druk (Thunder Dragon)**:
+   - Divided equally along the diagonal, signifying equal harmony between secular and religious authority.
+   - White color represents the immaculate purity of inner thoughts and righteous deeds of the Bhutanese people.
+   - The snarling mouth reflects the dragon's fierce defense of national sovereignty and independence.
+   - The four precious **wish-fulfilling jewels (norbu)** clutched in its claws symbolize the inexhaustible wealth, peace, and security of the Kingdom.
+
+#### Other Sovereign Symbols:
+- **National Animal**: Takin (*Budorcas taxicolor whitei*).
+- **National Flower**: Blue Poppy (*Meconopsis gakyidiana*).
+- **National Tree**: Himalayan Cypress (*Cupressus torulosa / Tsenden*).
+- **National Bird**: Raven (*Corvus corax tibetanus*), featured on the Royal Raven Crown.
+- **National Sport**: Traditional Archery (Dha).
+- **National Dress**: Gho (men) and Kira (women).`,
+  },
+  {
     keywords: ['http', 'status', 'codes', '404', '500', '200', '301'],
     title: 'HTTP Status Code Reference',
     summary: 'Standard HTTP response status codes categorized by their initial digit.',
@@ -446,7 +559,68 @@ export class DubaOfflineBrain {
 - ཤེས་ཡོན། • ལམ་སྲོལ་སྣ་ཚོགས། • བདག་སྐྱོང་ལེགས་ལྡན།
 - མི་སྡེའི་མཐུན་ལམ། • སྐྱེ་ལྡན་རིགས་སྣ། • འཚོ་བའི་གནས་སྟངས།
 
-*དུ་བ་ རང་སོའི་རིག་རྩལ་གྱིས་ དྲ་རྒྱའི་དགོས་མཁོ་མེད་པར་ ཕུལ་ཡོད།*`;
+      // Bhutan Automation History in Dzongkha
+      if (
+        lower.includes('བྱུང་རབས') ||
+        lower.includes('གློག་རིག') ||
+        lower.includes('དགེ་ལེགས་ཕུ') ||
+        lower.includes('དྲན་ཤེས་ཁྲོམ་ཚོགས') ||
+        lower.includes('ndi') ||
+        lower.includes('ངོ་སྤྲོད')
+      ) {
+        return `### 🇧🇹 འབྲུག་གི་རང་བཞིན་ལས་རིམ་དང་ གློག་རིག་བྱུང་རབས་ (Automation History of Bhutan)
+
+འབྲུག་རྒྱལ་ཁབ་ནང་ **རྒྱལ་ཡོངས་དགའ་སྐྱིད་དཔལ་འཛོམས་ (GNH)** ཀྱི་ལྟ་གྲུབ་དང་འཁྲིལ་ཏེ་ གློག་རིག་དང་ རང་བཞིན་འཕྲུལ་རྩལ་གོང་འཕེལ་གཏང་ནིའི་ ལོ་རྒྱུས་གཙོ་བོ་ཚུ:
+
+#### ༡. དྲ་རྒྱ་དང་བརྡ་དོན་འཕྲུལ་རྩལ་འགོ་བཙུགས་པ (༡༩༩༩ – ༢༠༠༦)
+- **༡༩༩༩ སྤྱི་ཟླ་ ༦ པའི་ཚེས་ ༢**: མི་དབང་འབྲུག་རྒྱལ་བཞི་པ་མཆོག་གི་ གསེར་ཁྲི་མངའ་གསོལ་དངུལ་གྱི་དུས་སྟོན་སྐབས་ འབྲུག་ལུ་ **དྲ་རྒྱ་ (Internet) དང་ རྒྱང་མཐོང་ (Television)** འགོ་ཐོག་འགོ་འབྱེད་མཛད་གནང་ཡི།
+- **༢༠༠༣**: འབྲུག་བརྒྱུད་འཕྲིན་ (Bhutan Telecom) དང་ འགྲོ་འགྲུལ་བརྒྱུད་འཕྲིན་ (Mobile Cellular) དར་ཁྱབ་བཏང་ཡི།
+
+#### ༢. གཞུང་སྐྱོང་འཕྲུལ་རིམ་དང་ ཌི་ཇི་ཊཱལ་འབྲུག་ཡུལ་ (༢༠༠༧ – ༢༠༡༩)
+- **རྒྱལ་ཡོངས་འོད་སྐུད་དྲ་བ (Optical Fiber Backbone)**: རྫོང་ཁག་ ༢༠ དང་ རྒེད་འོག་ ༢༠༥ ལུ་ མགྱོགས་འགྲོས་ཅན་གྱི་ འོད་སྐུད་བཙུགས་ཏེ་ གཞུང་གི་ཞབས་ཏོག་ ༡༠༠ ལྷགཔ་ཅིག་ (G2C Online Services) གློག་རིག་ཐོག་ལུ་ རང་བཞིན་བཟོ་ཡི།
+- **གངས་རོ་མཚོ་རྡོལ་ཉེན་བརྡ་ (GLOF Early Warning)**: གནམ་གཤིས་དང་ ཆུ་རུད་ཀྱི་ཉེན་ཁ་སྔོན་འགོག་ལུ་ གནམ་གནས་འཕྲུལ་སྐུད་བརྒྱུད་དེ་ རང་བཞིན་ཉེན་བརྡ་གཏང་ནི་འགོ་བཙུགས་ཡི།
+
+#### ༣. རྒྱལ་ཡོངས་ཌི་ཇི་ཊཱལ་ངོ་སྤྲོད་ (Bhutan NDI) དང་ གློག་རིག་དངུལ་ལོར (༢༠༢༠ – ༢༠༢༣)
+- **འཛམ་གླིང་ནང་འགོ་ཐོག་ NDI**: ༢༠༢༣ སྤྱི་ཟླ་ ༣ པའི་ནང་ འབྲུག་རྒྱལ་ཁབ་ཀྱིས་ འཛམ་གླིང་ནང་ བལོག་ཅེན་ (Blockchain SSI) ཐོག་ལས་ **རྒྱལ་ཡོངས་ཌི་ཇི་ཊཱལ་ངོ་སྤྲོད་ (Bhutan NDI)** ལག་ལེན་འཐབ་མི་ རྒྱལ་ཁབ་དང་པ་ལུ་གྱུར་ཡི།
+- **རང་བཞིན་ཆུ་ཤུགས་གློག་མེ་དང་ བིཊ་ཀོའིན (Clean Hydro Crypto)**: དྲུག་འཛིན་སྐྱོང་མ་དངུལ་ (DHI) གིས་ འབྲུག་གི་ཆུ་ཤུགས་གློག་མེ་བཙོག་མེད་ལག་ལེན་འཐབ་སྟེ་ རྒྱལ་ཁབ་ཀྱི་མ་རྩ་བརྟན་ཏོག་ཏོ་བཟོ་ཡི།
+
+#### ༤. དགེ་ལེགས་ཕུ་དྲན་ཤེས་ཁྲོམ་ཚོགས (GMC) དང་ མ་འོངས་ AI གློག་རིག་ (༢༠༢༣ – ད་ལྟོ)
+- **༢༠༢༣ སྤྱི་ཟླ་ ༡༢ པའི་ཚེས་ ༡༧**: མི་དབང་མངའ་བདག་རིན་པོ་ཆེ་མཆོག་གིས་ རྒྱལ་ཡོངས་དུས་ཆེན་ ༡༡༦ པའི་སྐབས་ **དགེ་ལེགས་ཕུ་དྲན་ཤེས་ཁྲོམ་ཚོགས (Gelephu Mindfulness City - SAR)** གསར་གཏོད་མཛད་གནང་ཡི།
+- འདི་གིས་ འཛམ་གླིང་གི་ གློག་རིག་ AI བརྟག་དཔྱད་ཁང་དང་ ལྗང་ཁུ་གློག་རིག་ དེ་ལས་ དཔལ་འབྱོར་གོང་འཕེལ་གྱི་ལྟེ་བ་སྦེ་ ཕྱག་ལཱ་གནང་དོ་ཡོད།`;
+      }
+
+      // Bhutan Civics in Dzongkha (རྒྱལ་འབངས་རིག་པ)
+      if (
+        lower.includes('རྒྱལ་འབངས') ||
+        lower.includes('རྩ་ཁྲིམས') ||
+        lower.includes('ཚོགས་སྡེ') ||
+        lower.includes('ཚོགས་འདུ') ||
+        lower.includes('སྤྱི་ཚོགས') ||
+        lower.includes('བཅའ་ཁྲིམས')
+      ) {
+        return `### 🇧🇹 འབྲུག་གི་རྒྱལ་འབངས་རིག་པ་དང་ གཞུང་སྐྱོང་ (Bhutan Civics & Governance)
+
+འབྲུག་རྒྱལ་ཁབ་འདི་ **སྤྱི་ལོ་ ༢༠༠༨ སྤྱི་ཟླ་ ༧ པའི་ཚེས་ ༡༨** ལུ་ མི་དབང་འབྲུག་རྒྱལ་བཞི་པ་དང་ ལྔ་པ་མཆོག་གིས་ གནང་མི་ **རྩ་ཁྲིམས་ཆེན་མོའི་** འོག་ལུ་ དམངས་གཙོའི་རྒྱལ་བརྒྱུད་རྒྱལ་ཁབ་ཅིག་ཨིན།
+
+#### ༡. རྒྱལ་ཁབ་ཀྱི་དབུ་ཁྲིད: མི་དབང་མངའ་བདག་རིན་པོ་ཆེ
+- མི་དབང་འབྲུག་རྒྱལ་པོ་མཆོག་འདི་ རྒྱལ་ཁབ་ཀྱི་དབུ་ཁྲིད་དང་ མི་སེར་གཅིག་སྒྲིལ་གྱི་དཔང་རྟགས་ཨིན།
+- ད་ལྟོའི་རྒྱལ་པོ་: **མི་དབང་མངའ་བདག་འཇིགས་མེད་གེ་སར་རྣམ་རྒྱལ་དབང་ཕྱུག་མཆོག** (འབྲུག་རྒྱལ་ལྔ་པ)།
+
+#### ༢. གཞུང་གི་ཡན་ལག་གསུམ:
+1. **བཀོད་ཁྱབ་ལྷན་རྒྱས (Executive)**: བློན་ཆེན་ (Prime Minister) དང་ བློན་པོ་ལྷན་རྒྱས་ཀྱིས་ འགོ་འདྲེན་འཐབ་མི་ གཞུང་སྐྱོང་ལྷན་ཚོགས།
+2. **སྤྱི་ཚོགས་ (Legislative)**:
+   - **རྒྱལ་ཡོངས་ཚོགས་སྡེ (National Council)**: འཐུས་མི་ ༢༥ (རྫོང་ཁག་ ༢༠ ལས་ དམངས་ཀྱིས་བདམས་མི་ ༢༠ དང་ མི་དབང་མཆོག་གིས་བསྐོ་བཞག་མཛད་མི་ ༥) — སྲིད་དོན་མེད་པའི་ བསྐྱར་ཞིབ་ཚོགས་སྡེ།
+   - **རྒྱལ་ཡོངས་ཚོགས་འདུ (National Assembly)**: འཐུས་མི་ ༤༧ — སྲིད་དོན་ཚོགས་པ་ལས་ བདམས་ཐོན་བྱུང་མི་ ཁྲིམས་བཟོའི་ཚོགས་འདུ།
+3. **ཁྲིམས་ཀྱི་དབང་འཛིན (Judiciary)**: འབྲུག་གི་ཆེ་མཐོའི་ཁྲིམས་ཀྱི་འདུན་ས་ (Supreme Court) དང་ ཁྲིམས་འདུན་གོང་མ། རྫོང་ཁག་ཁྲིམས་འདུན་ཚུ།
+
+#### ༣. རང་དབང་ཅན་གྱི་རྩ་ཁྲིམས་ལྷན་ཚོགས་བཞི:
+- **RCSC**: རྒྱལ་གཞུང་ཞི་གཡོག་ལྷན་ཚོགས།
+- **ECB**: འབྲུག་གི་བཙག་འཐུ་ལྷན་ཚོགས།
+- **ACC**: ངན་པ་ལྐོག་ཟ་བཀག་སྡོམ་ལྷན་ཚོགས།
+- **RAA**: རྒྱལ་གཞུང་རྩིས་ཞིབ་དབང་འཛིན།
+
+#### ༤. རང་བཞིན་གནས་སྟངས་རྩ་ཁྲིམས་ཀྱི་བཀོད་རྒྱ:
+- རྩ་ཁྲིམས་ཀྱི་དོན་ཚན་ ༥ པ་ལྟར་དུ་ **འབྲུག་གི་ས་ཁྱོན་བརྒྱ་ཆ་ ༦༠ དུས་ནམ་ཡང་ ཤིང་ནགས་ཀྱིས་ཁྱབ་དགོཔ་** ངེས་གཏན་བཟོ་ཡོད། (ད་ལྟོ་ བརྒྱ་ཆ་ ༧༡ ལྷག་ཙམ་ཡོད)`;
       }
 
       // Bhutan places / Geography
